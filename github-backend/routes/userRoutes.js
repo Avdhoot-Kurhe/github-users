@@ -74,11 +74,7 @@ router.delete("/delete/:username", async (req, res) => {
   const { username } = req.params;
 
   try {
-    const user = await User.findOneAndUpdate(
-      { username },
-      { isDeleted: true },
-      { new: true }
-    );
+    const user = await User.findOneAndDelete({ username });
     if (!user) {
       return res.status(404).json({ message: "User not found." });
     }
