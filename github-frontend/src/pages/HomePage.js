@@ -18,14 +18,28 @@ const HomePage = () => {
     try {  
       const response = await axios.get('https://github-users-9uiw.onrender.com/api/users/all-users');  
       setUserData(response.data);  
-        console.log("here data is "+response.data);
+      // console.log("here data is "+response.data);
     } catch (error) {  
       console.error('Error fetching user data:', error);  
     }  
   }; 
+  
+  const deleteUser = async (username) => {
+    try {
+      await axios.delete(
+        `https://github-users-9uiw.onrender.com/api/users/delete/${username}`
+      );
+      alert( username+" is deleted from the database");
+      console.log(`User ${username} deleted.`);
+      hereData();
+    } catch (error) {
+      console.error(`Error deleting user ${username}:`, error.message);
+    }
+  };
+
   useEffect(() => {
     hereData();
-  },[]);
+  },[fetchUserData,hereData]);
 
   return (
     <div>
@@ -35,15 +49,21 @@ const HomePage = () => {
           <h1>User Data</h1>  
     <ul>  
     {userData.map((user) => (  
-  <Link to={`/user-details/${user.username}`}  state={{ user }} key={user.id} className='userBox'>
-    <div className='userNames'>
+      <div className='userNames'>
+      <Link to={`/user-details/${user.username}`}  state={{ user }} key={user.id} className='userBox'>
       <img src={user.avatar_url} alt={`${user.username}'s avatar`} />
       <div>
       <h3>{user.username}</h3>
       <p>{user.bio}</p>
       </div>
-    </div>
   </Link>
+  <button
+                  onClick={() => deleteUser(user.username)}
+                  className="deleteButton"
+                >
+                  Delete
+                </button>
+    </div>
 ))}  
     </ul> 
         </div>

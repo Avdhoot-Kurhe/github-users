@@ -19,12 +19,14 @@
 }
 
 .userBox:hover {
-  transform: scale(1.05);
+  transform:scale(1.05);
 }
 
 
 .userNames {
+  width: 80vw;;
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -40,12 +42,31 @@ h3{
 }
 p{
   color: gray;
+  text-align: start;
+  text-decoration: none;
 }
 
 .userNames div  *{
+  width: 60vw;
   font-size: 1.0rem;
   margin: 0px;
   padding: 0px;
+}
+
+
+
+.deleteButton {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.deleteButton:hover {
+  background-color: darkred;
 }
 
 
@@ -57,19 +78,21 @@ p{
   justify-content: space-between;
   text-align: start;
   font-size: 1.0rem;
-  border: 2px solid gray;
+  /* border: 2px solid gray; */
 }
 
+
 .datails-1{
-  width: 30vw;
+  width: 25vw;
   display: block;
 }
 .datails-2{
-  width: 65vw;
+  width: 70vw;
 }
 
+
 .userDetails-cart div{
-  border: 3px solid gray;
+  /* border: 3px solid gray; */
 }
 
 
@@ -77,4 +100,15 @@ p{
   width: 200px;
   height: 200px;
   border-radius: 50%;
+}
+#card{
+width: 60vw; 
+margin: 10px;
+padding: 10px;
+border :2px solid Black;
+border-radius: 5px ;
+}
+a{
+  color: navy;
+  text-decoration: none;
 }
